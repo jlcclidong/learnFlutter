@@ -15,8 +15,11 @@ dev_dependencies:
     sdk: flutter
 
 
+
 flutter:
   uses-material-design: true
+  assets:
+    - images/
   application:
     androidPackage: com.example.flutterlearn
     iosBundleIdentifier: com.example.flutterLearn

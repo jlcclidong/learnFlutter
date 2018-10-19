@@ -18,10 +18,12 @@ class MyRowView extends StatelessWidget {
         title: new Text("水平列表"),
       ),
       body: new Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           new RaisedButton(
+            padding: EdgeInsets.all(0.0),
             onPressed: () {
-              print("点击红色按钮");
+              print("点击1红色按钮");
             },
             color: Colors.red,
             child: new Text(

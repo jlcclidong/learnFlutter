@@ -18,7 +18,8 @@ class LoginView extends StatefulWidget {
   }
 }
 
-class LoginViewState extends State<LoginView> {
+class LoginViewState extends State<LoginView>
+    with AutomaticKeepAliveClientMixin {
   int _type = 0; //0-main_driver 1-co_driver
   String _username = '';
   String _password = '';
@@ -40,23 +41,26 @@ class LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        body: new Form(
+    return new Form(
       key: _formKey,
-      child: new Column(
-        children: <Widget>[
-          _topBottomPadding,
-          _buildChoiceDriver(),
-          _paddingV,
-          _buildUsernameInput(0),
-          _paddingV,
-          _buildUsernameInput(1),
-          _paddingV,
-          _buildLoginButton(),
-          _topBottomPadding,
-        ],
+      child: new Center(
+        child: new Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            // _topBottomPadding,
+            _buildChoiceDriver(),
+            _paddingV,
+            _buildUsernameInput(0),
+            _paddingV,
+            _buildUsernameInput(1),
+            _paddingV,
+            _buildLoginButton(),
+            // _topBottomPadding,
+          ],
+        ),
       ),
-    ));
+    );
   }
 
   ///选择主副司机
@@ -174,4 +178,8 @@ class LoginViewState extends State<LoginView> {
       ),
     );
   }
+
+  // TODO: implement wantKeepAlive
+  @override
+  bool get wantKeepAlive => true;
 }

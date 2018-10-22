@@ -4,6 +4,7 @@ import 'package:flutter_learn/timep.dart';
 import 'package:flutter_learn/login.dart';
 import 'package:flutter_learn/row.dart';
 import 'package:flutter_learn/stack.dart';
+import 'package:flutter_learn/StatusPage.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -31,7 +32,7 @@ class MyBottomState extends State<MyBottom> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Widget a = new MyHomePage();
+    Widget a = new StatusPage();
     Widget b = new LoginView();
     Widget c = new MyRowView();
     Widget d = new MyStackView();

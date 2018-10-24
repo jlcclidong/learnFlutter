@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:dio/dio.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -20,6 +21,7 @@ class LoginView extends StatefulWidget {
 
 class LoginViewState extends State<LoginView>
     with AutomaticKeepAliveClientMixin {
+  static const login = "http://120.79.162.53:8080/AiSrs/terminal/login";
   int _type = 0; //0-main_driver 1-co_driver
   String _username = '';
   String _password = '';
@@ -31,6 +33,7 @@ class LoginViewState extends State<LoginView>
   final SizedBox _paddingH = const SizedBox(
     width: 10.0,
   );
+
   //上下占位用
   final Expanded _topBottomPadding = const Expanded(
     flex: 1,
@@ -163,6 +166,7 @@ class LoginViewState extends State<LoginView>
               toastLength: Toast.LENGTH_SHORT,
             );
           } else {
+            _login();
             Fluttertoast.showToast(
               msg:
                   '''$_username------$_password----${_type == 0 ? "maindriver" : "codriver"}''',
@@ -179,7 +183,18 @@ class LoginViewState extends State<LoginView>
     );
   }
 
-  // TODO: implement wantKeepAlive
+  Future _login() async {
+    var dio = new Dio();
+    Response response = await dio.get(
+      login,
+      data: {
+        "JOBNUMBER": _username,
+        "PWD": _password,
+      },
+    );
+    print(response.data);
+  }
+
   @override
   bool get wantKeepAlive => true;
 }
